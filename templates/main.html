@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+</head>
+<body>
+{% block content %}
+    {% if user.is_active %}
+        <h1>Welcome!</h1>{{ username }}
+    {% else %}
+        <a href="/accounts/login/"></a>
+    {% endif %}
+{% endblock %}
+
+</body>
+</html>

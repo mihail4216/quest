@@ -7,7 +7,7 @@ from One.views import *
 
 
 urlpatterns = [
-    url(r'^/',MainView.as_view(),name='main'),
+    url(r'^',MainView.as_view(),name='main'),
     # url(r'^logout/', include()),
 
 ]
