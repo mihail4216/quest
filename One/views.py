@@ -1,6 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
-from django.views.generic.list import ListView
+from django.views.generic.base import TemplateView
 
 
-class MainView(ListView):
+
+class MainView(TemplateView):
     template_name = "main.html"

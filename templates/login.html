@@ -1,9 +1,13 @@
 {% extends "main.html" %}
+
+
+
 {% block content %}
-    <form action="/login/"method="post">
+    <form action="/accounts/login/"method="post">
+    {% csrf_token %}
     <div><label>Login:</label>{{ form.username }}</div>
     <div><label>Password:</label>{{ form.password }}</div>
-    <button>Login:</button>
+    <button>SingUp:</button>
     </form>
 
 {% endblock %}

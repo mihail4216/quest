@@ -7,9 +7,10 @@
 <body>
 {% block content %}
     {% if user.is_active %}
-        <h1>Welcome!</h1>{{ username }}
+        <h1>Welcome {{ user }}!</h1>
+        <a href="/accounts/logout/">Logout:</a>
     {% else %}
-        <a href="/accounts/login/"></a>
+        <a href={% url 'login' %}>Login:</a>
     {% endif %}
 {% endblock %}
 
