@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
 from django.shortcuts import render, render_to_response, redirect
 from django.views.generic.base import TemplateView, RedirectView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, CreateView
 
 
 class LoginView(FormView):
@@ -22,8 +23,14 @@ class LogoutView(RedirectView):
     def get(self, request, *args, **kwargs):
         auth.logout(request)
         return redirect('/')
-class RegisterView(FormView):
+class RegisterView(CreateView):
     template_name = 'register.html'
-    success_url = '/register/'
+    model = User
     form_class = UserCreationForm
+    def get_success_url(self):
+        self.urls='/register/'
     def form_valid(self, form):
+        self.user = form.save()
+        print 123
+        return redirect('/',self.user)
+
