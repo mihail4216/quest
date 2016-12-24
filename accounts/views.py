@@ -6,6 +6,8 @@ from django.shortcuts import render, render_to_response, redirect
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.edit import FormView, CreateView
 
+from accounts.forms import CustomUserCreationForm
+
 
 class LoginView(FormView):
     template_name = "login.html"
@@ -16,21 +18,25 @@ class LoginView(FormView):
         user = form.get_user()
         auth.login(self.request,user)
         return redirect('/accounts/lk/',user)
+
+
 class LkView(TemplateView):
     template_name = "lk.html"
-class LogoutView(RedirectView):
 
+
+class LogoutView(RedirectView):
     def get(self, request, *args, **kwargs):
         auth.logout(request)
         return redirect('/')
+
+
 class RegisterView(CreateView):
     template_name = 'register.html'
     model = User
-    form_class = UserCreationForm
+    form_class = CustomUserCreationForm
     def get_success_url(self):
         self.urls='/register/'
     def form_valid(self, form):
         self.user = form.save()
-        print 123
         return redirect('/',self.user)
 
