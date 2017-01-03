@@ -1,4 +1,8 @@
-#login{
-    margin-left: 500px;
+.login{
+    margin-left: 80%;
 
+}
+label{
+    display: block;
+    margin: 10px;
 }

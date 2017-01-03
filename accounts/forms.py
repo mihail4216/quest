@@ -40,3 +40,15 @@ class CustomUserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            "last_name",
+            "first_name",
+        )
+    last_name = forms.CharField()
+    first_name = forms.CharField()
+
+
+

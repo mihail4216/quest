@@ -3,7 +3,15 @@
 
 
 {% block content %}
-
-    <h1>Личный кабинет,{{ user}}!</h1>
-
+    {% if user.is_active %}
+        <h1>Личный кабинет!</h1>
+        <label >Ваш логин: {{ user.username }}</label>
+        <label>Ваш email: {{ user.email }}</label>
+        <label>Вашe имя: {{ user.first_name }}</label>
+        <label>Ваша фамилия: {{ user.last_name }}</label>
+        <label>Дата регистрации: {{ user.date_joined }}</label>
+        <label><a href="/accounts/edit/">Edit</a></label>
+    {% else %}
+        <h4>Сначала войдите или зарегистрируйтесь на сайте!</h4>
+    {% endif %}
 {% endblock %}

@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^logout/$', LogoutView.as_view(), name='logout'),
     url(r'^lk/',LkView.as_view(model=User),name='lk'),
     url(r'^register/',RegisterView.as_view(),name='register'),
+    url(r'^edit/',EditView.as_view(),name='edit'),
     # url(r'^logout/', include()),
 
 ]
