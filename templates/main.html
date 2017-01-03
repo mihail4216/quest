@@ -1,19 +1,30 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Главная</title>
+    <link rel="stylesheet" type="text/css" href="{% static "static/css/static.css"%}">
 </head>
 <body>
-{% block content %}
-    {% if user.is_active %}
-        <h1>Welcome,{{ user }}!</h1>
-        <a href="/accounts/logout/">Logout:</a>
+    <h2>Menu</h2>
+    <menu>
+        <li><a href="/" >Главная</a></li>
+        <li><a href="/accounts/lk/" >Личный кабинет</a></li>
+        <li><a href="#" ></a>О сайте</li>
+    </menu>
+
+   <div class="login"> {% if user.is_active %}
+
+        {{ user }}<a href="/accounts/logout/">,Logout:</a>
 
     {% else %}
         <a href={% url 'login' %}>Login:</a>
         <a href={% url 'register' %}>Register:</a>
     {% endif %}
+   </div>
+{% block content %}
+
 {% endblock %}
 
 </body>

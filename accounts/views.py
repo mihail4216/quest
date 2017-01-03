@@ -2,11 +2,14 @@
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+
 from django.shortcuts import render, render_to_response, redirect
+from django.views.generic import ListView
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.edit import FormView, CreateView
 
 from accounts.forms import CustomUserCreationForm
+# from accounts.models import User
 
 
 class LoginView(FormView):
@@ -20,7 +23,7 @@ class LoginView(FormView):
         return redirect('/accounts/lk/',user)
 
 
-class LkView(TemplateView):
+class LkView(ListView):
     template_name = "lk.html"
 
 
