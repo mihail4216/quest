@@ -409,12 +409,12 @@ model</ColNames>
       <DataType>TEXT(0,-1)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="89" parent="13" name="avtor_id">
+    <column id="89" parent="13" name="comments_news_id">
       <Position>2</Position>
       <DataType>INTEGER(0,-1)|4</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="90" parent="13" name="comments_news_id">
+    <column id="90" parent="13" name="avtor_id">
       <Position>3</Position>
       <DataType>INTEGER(0,-1)|4</DataType>
       <NotNull>1</NotNull>
@@ -425,20 +425,20 @@ model</ColNames>
     </key>
     <foreign-key id="92" parent="13" name="#FAKE_news_comments_2">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>avtor_id</ColNames>
+      <ColNames>comments_news_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <RefTableName>auth_user</RefTableName>
+      <RefTableName>news_news</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>no-action</OnDelete>
       <OnUpdate>no-action</OnUpdate>
     </foreign-key>
     <foreign-key id="93" parent="13" name="#FAKE_news_comments_1">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>comments_news_id</ColNames>
+      <ColNames>avtor_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <RefTableName>news_news</RefTableName>
+      <RefTableName>auth_user</RefTableName>
       <RefColNames>id</RefColNames>
       <OnDelete>no-action</OnDelete>
       <OnUpdate>no-action</OnUpdate>

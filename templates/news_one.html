@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+<h1>{{ news.title }}</h1>
+    <h2>{{ news.text }}</h2>
+    <h5><a>like: </a>{{ news.likes }}</h5>
+    <h5><a>Отправитель: </a>{{ news.avtor}}</h5>
+<hr>
+    <h2>Комментарии:</h2>
+{% for comment in comments_news %}
+    {{ comment.title }}
+
+{% endfor %}
+
+{% endblock %}
