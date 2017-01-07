@@ -40,6 +40,16 @@ class LogoutView(RedirectView):
 
 
 
+# class RegisterView(CreateView):
+#     template_name = 'register.html'
+#     model = User
+#     form_class = CustomUserCreationForm
+#     def get_success_url(self):
+#         self.urls='/register/'
+#     def form_valid(self, form):
+#         self.user = form.save()
+#         return redirect('/',self.user)
+
 class RegisterView(CreateView):
     template_name = 'register.html'
     model = User
@@ -47,9 +57,12 @@ class RegisterView(CreateView):
     def get_success_url(self):
         self.urls='/register/'
     def form_valid(self, form):
-        self.user = form.save()
-        return redirect('/',self.user)
-
+        user = form.save()
+        User.email = form.cleaned_data['email']
+        User.password = form.cleaned_data['password2']
+        User.username = form.cleaned_data['username']
+        user.save()
+        return redirect('/')
 
 
 
@@ -58,8 +71,13 @@ class EditView(UpdateView):
     form_class = EditForm
     model = User
     def get_success_url(self):
-        self.urls = '/edit/'
+        self.urls = '/lk/'
     def form_valid(self, form):
-        self.user = form.save()
-        return redirect('/lk/')
+        user= form.save()
+        User.email = form.cleaned_data['email']
+        User.last_name = form.cleaned_data['last_name']
+        User.first_name = form.cleaned_data['first_name']
+        user.save()
+        return redirect('/accounts/lk/')
+
 

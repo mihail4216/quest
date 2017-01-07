@@ -10,7 +10,7 @@
         <label>Вашe имя: {{ user.first_name }}</label>
         <label>Ваша фамилия: {{ user.last_name }}</label>
         <label>Дата регистрации: {{ user.date_joined }}</label>
-        <label><a href="/accounts/edit/">Edit</a></label>
+        <label><a href="/accounts/edit/{{ user.id }}/">Edit</a></label>
     {% else %}
         <h4>Сначала войдите или зарегистрируйтесь на сайте!</h4>
     {% endif %}
