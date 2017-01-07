@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 from news.models import *
 
@@ -6,6 +7,7 @@ class NewsAdmin(admin.ModelAdmin):
        'title',
        'text',
        'avtor',
+
    ]
    # inlines = ['NewsInLine']
 

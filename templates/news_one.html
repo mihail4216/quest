@@ -5,10 +5,17 @@
     <h5><a>like: </a>{{ news.likes }}</h5>
     <h5><a>Отправитель: </a>{{ news.avtor}}</h5>
 <hr>
-    <h2>Комментарии:</h2>
-{% for comment in comments_news %}
-    {{ comment.title }}
 
+<h2>Комментарии:</h2>
+
+{% for comment in news.comments_set.all %}
+    <hr>
+    <h3>{{ comment.title }}</h3>
+    <h4>{{ comment.text }}</h4>
+    <h5>Отправитель: {{ comment.avtor }}</h5>
+    <hr>
+    <br />
 {% endfor %}
+
 
 {% endblock %}
