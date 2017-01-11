@@ -129,29 +129,28 @@ codename</ColNames>
       <DataType>VARCHAR(128)(0,-1)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="36" parent="6" name="is_superuser">
+    <column id="36" parent="6" name="last_login">
       <Position>2</Position>
+      <DataType>DATETIME(0,-1)|12</DataType>
+    </column>
+    <column id="37" parent="6" name="is_superuser">
+      <Position>3</Position>
       <DataType>BOOL(0,-1)|4</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="37" parent="6" name="username">
-      <Position>3</Position>
-      <DataType>VARCHAR(30)(0,-1)|12</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="38" parent="6" name="first_name">
+    <column id="38" parent="6" name="username">
       <Position>4</Position>
       <DataType>VARCHAR(30)(0,-1)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="39" parent="6" name="last_name">
+    <column id="39" parent="6" name="first_name">
       <Position>5</Position>
       <DataType>VARCHAR(30)(0,-1)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="40" parent="6" name="email">
+    <column id="40" parent="6" name="last_name">
       <Position>6</Position>
-      <DataType>VARCHAR(254)(0,-1)|12</DataType>
+      <DataType>VARCHAR(30)(0,-1)|12</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="41" parent="6" name="is_staff">
@@ -169,9 +168,10 @@ codename</ColNames>
       <DataType>DATETIME(0,-1)|12</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="44" parent="6" name="last_login">
+    <column id="44" parent="6" name="email">
       <Position>10</Position>
-      <DataType>DATETIME(0,-1)|12</DataType>
+      <DataType>VARCHAR(254)(0,-1)|12</DataType>
+      <NotNull>1</NotNull>
     </column>
     <index id="45" parent="6" name="sqlite_autoindex_auth_user_1">
       <NameSurrogate>1</NameSurrogate>
@@ -412,7 +412,6 @@ model</ColNames>
     <column id="89" parent="13" name="avtor_id">
       <Position>2</Position>
       <DataType>INTEGER(0,-1)|4</DataType>
-      <NotNull>1</NotNull>
     </column>
     <column id="90" parent="13" name="title">
       <Position>3</Position>
@@ -422,7 +421,6 @@ model</ColNames>
     <column id="91" parent="13" name="comments_news_id">
       <Position>4</Position>
       <DataType>INTEGER(0,-1)|4</DataType>
-      <NotNull>1</NotNull>
     </column>
     <key id="92" parent="13">
       <ColNames>id</ColNames>
@@ -470,13 +468,17 @@ model</ColNames>
     <column id="99" parent="14" name="avtor_id">
       <Position>4</Position>
       <DataType>INTEGER(0,-1)|4</DataType>
-      <NotNull>1</NotNull>
     </column>
-    <key id="100" parent="14">
+    <index id="100" parent="14" name="sqlite_autoindex_news_news_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>title</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="101" parent="14">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="101" parent="14" name="#FAKE_news_news_1">
+    <foreign-key id="102" parent="14" name="#FAKE_news_news_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>avtor_id</ColNames>
       <Deferrable>1</Deferrable>
@@ -486,10 +488,10 @@ model</ColNames>
       <OnDelete>no-action</OnDelete>
       <OnUpdate>no-action</OnUpdate>
     </foreign-key>
-    <column id="102" parent="15" name="name">
+    <column id="103" parent="15" name="name">
       <DataType>(0,-1)|12</DataType>
     </column>
-    <column id="103" parent="15" name="seq">
+    <column id="104" parent="15" name="seq">
       <Position>1</Position>
       <DataType>(0,-1)|12</DataType>
     </column>

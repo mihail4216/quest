@@ -1,12 +1,13 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h1>News!</h1>
+<h1>News!</h1><a class="addnews" href="/news/add/">add news</a>
    {% for newsone in news_list %}
        <h2><a href="/news/{{ newsone.id }}/">{{ newsone.title }}</a></h2>
        <h3>{{ newsone.text }}</h3>
        <h5>Лайки: {{ newsone.likes }}</h5>
-       <h5>Автор: {{ newsone.avtor }}</h5>
+       <h5>Автор: {{ newsone.avtor.username }}</h5>
        <table width="100%" border="1px"></table>
    {% endfor %}
+
 {% endblock %}

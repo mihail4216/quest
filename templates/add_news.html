@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+{% if user.is_active %}
+    <h2>add News</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.title }}
+            {{ form.text }}
+            <br>
+            <button>Add News</button>
+        </form>
+{% else %}
+    <p>Login this site!</p>
+{% endif %}
+
+{% endblock %}

@@ -3,9 +3,9 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-# from accounts.models import User
 
-#
+
+
 class CustomUserCreationForm(forms.ModelForm):
     """
     A form that creates a user, with no privileges, from the given username and
@@ -43,7 +43,15 @@ class CustomUserCreationForm(forms.ModelForm):
             user.save()
         return user
 
-# class CustomUserCreationForm(forms.ModelForm):
+# class CustomUserCreationForm(ModelForm):
+#     class Meta:
+#         model = User
+#         fields = (
+#             "password",
+#
+#             "username",
+#             "email",
+#         )
 #     password1 = forms.PasswordInput()
 #     password2 = forms.PasswordInput()
 #     email = forms.EmailField()
@@ -58,8 +66,8 @@ class CustomUserCreationForm(forms.ModelForm):
 #                 code='password_mismatch',
 #             )
 #         return password2
-#
-#     def save(self, commit=True):
+
+
 #
 
 class EditForm(ModelForm):
