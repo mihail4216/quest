@@ -4,29 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная</title>
-    <link rel="stylesheet" type="text/css" href="{% static "static/css/static.css"%}">
+    <link rel="stylesheet" type="text/css" href="static/css/static.css">
 </head>
 <body>
-    <h2>Menu</h2>
-    <menu>
-        <li><a href="/" >Главная</a></li>
-        <li><a href="/accounts/lk/" >Личный кабинет</a></li>
-        <li><a href="/news/all/" >Новости</a></li>
-        <li><a href="#" ></a>О сайте</li>
-    </menu>
 
-   <div class="login"> {% if user.is_active %}
+	<header>
 
-       {{ user.username }}<a href="/accounts/logout/">(Logout)</a>
+	    <div class="menu_wrap">
+		    	<ul class="menu">
+			        <li><a href="#">Главная</a></li>
+			        <li><a href="/accounts/lk/">Личный кабинет</a></li>
+			        <li><a href="/news/all/">Новости</a></li>
+			        <li><a href="#">О сайте</a></li>
+		        </ul>
+	   </div>
 
-    {% else %}
-        <a href={% url 'login' %}>Login</a>
-        <a href={% url 'register' %}>Register</a>
-    {% endif %}
-   </div>
+	   <div class="login"> {% if user.is_active %}
+
+	       {{ user.username }}<a href="/accounts/logout/">(Logout)</a>
+
+	    {% else %}
+	        <a href={% url 'login' %}>Login</a>
+	        <a href={% url 'register' %}>Register</a>
+	    {% endif %}
+	   </div>
+
+	</header>
+
 {% block content %}
 
 {% endblock %}
+
+
+
 
 </body>
 </html>
