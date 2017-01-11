@@ -40,7 +40,7 @@ label{
 }
 
 
-/**********МЕНЮ***********/
+/**********МЕНЮ(main)***********/
 
 header {
 	width: 100%;
@@ -85,6 +85,80 @@ header {
 /************************/
 
 
+
+/*********ЛОГИН(login)**********/
+
+/*SING UP*/
+
+.singup {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto 0 auto;
+}
+
+/*Кпопка SIGN UP*/
+
+.btn_signup  { 
+    width: 18%; 
+    display: inline-block;
+    outline: none;          /*Убрать стандартный синий бордер при наведении*/
+    background-color: #f95252;
+    color: #fff;    
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor:pointer;
+}
+
+.btn_signup:hover {
+    background-color: #ec0000;
+    transition: all 1s ease;
+}
+
+.btn_signup:active {
+    background-color: #fba91c;
+    transition: all 1s ease;
+}
+
+/************************************/
+
+/*********РЕГИСТРАЦИЯ(register)**********/
+
+/*GO*/
+
+.go {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto 0 auto;
+}
+
+/*Кпопка GO*/
+
+.btn_go  { 
+    width: 18%; 
+    display: inline-block;
+    outline: none;          /*Убрать стандартный синий бордер при наведении*/
+    background-color: #f95252;
+    color: #fff;    
+    text-align: center;
+    padding: 0.8rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor:pointer;
+}
+
+.btn_go:hover {
+    background-color: #ec0000;
+    transition: all 1s ease;
+}
+
+.btn_go:active {
+    background-color: #fba91c;
+    transition: all 1s ease;
+}
+
+/************************************/
 
 .addnews{
     margin-left: 80%;

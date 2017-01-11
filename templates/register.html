@@ -3,9 +3,13 @@
 {% block content %}
     {% if not user.is_active  %}
     <form method="post" action="/accounts/register/">
+
         {% csrf_token %}
         {{ form }}
-        <button>Go:</button>
+        <div class="go">
+			<a href="#" class="btn_go">Sing Up</a>
+		</div>
+
     </form>
     {% endif %}
 {% endblock %}

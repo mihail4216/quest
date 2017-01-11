@@ -3,11 +3,23 @@
 
 
 {% block content %}
-    <form action="/accounts/login/"method="post">
+    <form action="/accounts/login/" method="post">
     {% csrf_token %}
-    <div><label>Login:</label>{{ form.username }}</div>
-    <div><label>Password:</label>{{ form.password }}</div>
-    <button>SingUp:</button>
+
+		    <div>
+			    <label>Login:</label>
+			    {{ form.username }}
+		    </div>
+		    
+		    <div>
+			    <label>Password:</label>
+			    {{ form.password }}
+		    </div>
+			
+			<div class="singup">
+				<a href="#" class="btn_signup">Sing Up</a>
+			</div>
+	    	
     </form>
 
 {% endblock %}
