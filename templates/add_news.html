@@ -6,7 +6,9 @@
     <h2>add News</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form }}
+            <label>Заголовок:<br>{{ form.title }}</label>
+            <br>
+            <label>Текст:<br>{{ form.text }}</label>
             <br>
             <button>Add News</button>
         </form>
