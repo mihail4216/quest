@@ -7,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{% static "static/css/static.css"%}">
 </head>
 <body>
-<<<<<<< Updated upstream
     <h2>Menu</h2>
     <menu>
         <li><a href="/" >Главная</a></li>
@@ -25,32 +24,6 @@
         <a href={% url 'register' %}>Register</a>
     {% endif %}
    </div>
-=======
-
-	<header>
-
-	    <div class="menu_wrap">
-		    	<ul class="menu">
-			        <li><a href="/">Главная</a></li>
-			        <li><a href="/accounts/lk/">Личный кабинет</a></li>
-			        <li><a href="/news/all/">Новости</a></li>
-			        <li><a href="#">О сайте</a></li>
-		        </ul>
-	   </div>
-
-	   <div class="login"> {% if user.is_active %}
-
-	       {{ user.username }}<a href="/accounts/logout/">(Logout)</a>
-
-	    {% else %}
-	        <a href={% url 'login' %}>Login</a>
-	        <a href={% url 'register' %}>Register</a>
-	    {% endif %}
-	   </div>
-
-	</header>
-
->>>>>>> Stashed changes
 {% block content %}
 
 {% endblock %}
