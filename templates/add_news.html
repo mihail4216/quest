@@ -6,8 +6,7 @@
     <h2>add News</h2>
         <form method="post">
             {% csrf_token %}
-            {{ form.title }}
-            {{ form.text }}
+            {{ form }}
             <br>
             <button>Add News</button>
         </form>
