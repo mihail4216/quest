@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import DetailView
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
@@ -54,7 +54,7 @@ class NewsOneView(CreateView):
         # в твоем случае это будет модель NEw
         # context['news'] - это так мы создаем переменную для шаблона
         context['news'] = News.objects.get(id=self.kwargs['pk'])
-        print context
+
         return context
 
     """НЕПРАВИОООО то что ниже"""
@@ -62,6 +62,7 @@ class NewsOneView(CreateView):
         comment = form.save()
         # Комментарий прикрепляем к новости
         comment.comments_news = News.objects.get(id=self.kwargs['pk'])
+        user = User.objects.get(id=self.request.user.id)
         # здесь мне нужно указать к какой новости я делаю комментарий?
         # а автора тоже нужно в форм валид указыать?
         # <= Вот

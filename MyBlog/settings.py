@@ -101,6 +101,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+# STATIC_ROOT = "/home/mihail/PycharmProjects/MyBlog/static"
 
 
 # Static files (CSS, JavaScript, Images)
@@ -108,7 +109,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    ('static','/home/mihail/PycharmProjects/MyBlog/static/css'),
+    ('static','/home/mihail/PycharmProjects/MyBlog/static'),
 )
 
 
