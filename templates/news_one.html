@@ -2,7 +2,7 @@
 {% block content %}
 <h1>{{ news.title }}</h1>
     <h2>{{ news.text }}</h2>
-    <h5><a>like: </a>{{ news.likes }}</h5>
+    <h5><a href="/news/add_like/{{ news.id }}/">like: </a>{{ news.likes }}</h5>
     <h5><a>Отправитель: </a>{{ news.avtor}}</h5>
 <hr>
 

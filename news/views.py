@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
 from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import DetailView
 from django.views.generic import ListView
+from django.views.generic import RedirectView
 from django.views.generic.edit import CreateView
 
 from news.forms import NewsAddForm, CommentAddForm
@@ -107,3 +110,24 @@ class NewsAddView(CreateView):
         # и обязателнно сохраняем его
         return redirect('/news/all/')
 
+def AddLikeView(requst,pk):
+    # try:
+    if pk not in requst.COOKIES:
+        news = News.objects.get(id=pk)
+        news.likes += 1
+        news.save()
+        response = redirect('/news/'+pk)
+        response.set_cookie(pk,news.title)
+        # except ObjectDoesNotExist:
+        #     raise Http404
+        return response
+    else:
+        redirect('/news/'+pk)
+    return redirect('/news/' + pk)
+# class AddLikeViews(RedirectView):
+#
+#     def get(self, request, *args, **kwargs):
+#         news = News.objects.filter(id=args)
+#         news.likes += 1
+#         news.save()
+#         return redirect('/news/'+kwargs)
