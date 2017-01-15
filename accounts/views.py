@@ -58,9 +58,9 @@ class RegisterView(CreateView):
         self.urls='/register/'
     def form_valid(self, form):
         user = form.save()
-        User.email = form.cleaned_data['email']
-        User.password = form.cleaned_data['password2']
-        User.username = form.cleaned_data['username']
+        # User.email = form.cleaned_data['email']
+        # User.password = form.cleaned_data['password2']
+        # User.username = form.cleaned_data['username']
         user.save()
         return redirect('/')
 

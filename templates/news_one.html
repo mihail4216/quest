@@ -16,15 +16,14 @@
     <hr>
     <br />
 {% endfor %}
-    <form method="post">
+    {% if user.is_active %}<form method="post">
         {% csrf_token %}
         {{ form }}
-{#    Кнопка такого типа отправляет форму#}
-{#        типа type="button" просто для нажатия на странице #}
-
-    <button class="btn_go" type="submit">add</button>
-
+        <button class="btn_go" type="submit">add</button>
     </form>
+    {% else %}
+        <label>Только зарегистрированные пользователи могу оставлять комментарии.</label>
+    {% endif %}
 
 
 {% endblock %}
