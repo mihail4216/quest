@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'One',
     'accounts',
     'news',
-)
+
+    )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
