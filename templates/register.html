@@ -2,11 +2,18 @@
 
 {% block content %}
     {% if not user.is_active  %}
-    <form method="post" action="/accounts/register/">
+    <form method="post" action="/accounts/register/" class="form-horizontal">
 
         {% csrf_token %}
-        {{ form }}
-{#       <br><label>repeat pass:</label> {{ form.password2 }}#}
+        {% for i in form %}
+            <div class="form-group">
+            <label class="col-sm-2 control-label">{{ i.label }}</label>
+            {{ i }}
+            </div>
+        {% endfor %}
+
+
+        {#       <br><label>repeat pass:</label> {{ form.password2 }}#}
         <div class="go">
 			<button  class="btn_go" type="submit">Sing Up</button>
 		</div>
