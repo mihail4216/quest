@@ -65,7 +65,7 @@ class NewsOneView(CreateView):
         comment = form.save()
         # Комментарий прикрепляем к новости
         comment.comments_news = News.objects.get(id=self.kwargs['pk'])
-        user = User.objects.get(id=self.request.user.id)
+        comment.avtor = User.objects.get(id=self.request.user.id)
         # здесь мне нужно указать к какой новости я делаю комментарий?
         # а автора тоже нужно в форм валид указыать?
         # <= Вот

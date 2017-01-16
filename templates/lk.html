@@ -5,12 +5,14 @@
 {% block content %}
     {% if user.is_active %}
         <h1>Личный кабинет!</h1>
-        <label >Ваш логин: {{ user.username }}</label>
-        <label>Ваш email: {{ user.email }}</label>
-        <label>Вашe имя: {{ user.first_name }}</label>
-        <label>Ваша фамилия: {{ user.last_name }}</label>
-        <label>Дата регистрации: {{ user.date_joined }}</label>
-        <label><a href="/accounts/edit/{{ user.id }}/">Edit</a></label>
+        <div >
+            <label  >Ваш логин:<br> {{ user.username }}</label><br>
+        <label >Ваш email: {{ user.email }}</label><br>
+        <label>Вашe имя: {{ user.first_name }}</label><br>
+        <label>Ваша фамилия: {{ user.last_name }}</label><br>
+        <label>Дата регистрации: {{ user.date_joined }}</label><br>
+        <label><a href="/accounts/edit/{{ user.id }}/">Edit</a></label><br>
+        </div>
     {% else %}
         <h4>Сначала войдите или зарегистрируйтесь на сайте!</h4>
     {% endif %}

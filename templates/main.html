@@ -20,8 +20,10 @@
        <p class="text-right">{{ user.username }}<a href="/accounts/logout/">(Logout)</a></p>
 
     {% else %}
-        <a href={% url 'login' %}>Login</a>
-        <a href={% url 'register' %}>Register</a>
+        <p class="text-right">
+            <a href={% url 'login' %}>Login</a>
+            <a href={% url 'register' %}>Register</a>
+        </p>
     {% endif %}
    </div>
 {% block content %}

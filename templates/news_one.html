@@ -18,8 +18,11 @@
 {% endfor %}
     {% if user.is_active %}<form method="post">
         {% csrf_token %}
-        {{ form }}
-        <button class="btn_go" type="submit">add</button>
+        {% for i in form %}
+            <label>{{ i.label }}</label><br>{{ i }}<br>
+
+        {% endfor %}
+        <button class="button btn-primary" type="submit">add</button>
     </form>
     {% else %}
         <label>Только зарегистрированные пользователи могу оставлять комментарии.</label>
