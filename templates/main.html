@@ -12,12 +12,12 @@
         <li><a href="/" >Главная</a></li>
         <li><a href="/accounts/lk/" >Личный кабинет</a></li>
         <li><a href="/news/all/" >Новости</a></li>
-        <li><a href="#" ></a>О сайте</li>
+        <li><a href="/message/all/{{ user.id }}/" >Сообщения</a></li>
     </menu>
 
    <div class="login"> {% if user.is_active %}
 
-       {{ user.username }}<a href="/accounts/logout/">(Logout)</a>
+       <p class="text-right">{{ user.username }}<a href="/accounts/logout/">(Logout)</a></p>
 
     {% else %}
         <a href={% url 'login' %}>Login</a>

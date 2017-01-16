@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<h1>Мои сообщения</h1><p><a href="/message/send_message/">send</a></p>
+{% for i in message1 %}
+
+    <div class="checkbox">
+   <table border="1px">
+       <tr><td><label>Отправитель:{{ i.sender }}</label></td>
+
+           <td width="100%"><label>Текст:  {{ i.text }}</label></td>
+       </tr>
+   </table>
+    </div>
+{% endfor %}
+
+
+{% endblock %}

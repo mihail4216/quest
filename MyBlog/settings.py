@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'One',
     'accounts',
     'news',
+    'massage',
 
     )
 

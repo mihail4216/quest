@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^accounts/', include('accounts.urls')),
     url(r'^news/', include('news.urls')),
     url(r'^$', include('One.urls')),
+    url(r'^message/',include('massage.urls')),
 ]

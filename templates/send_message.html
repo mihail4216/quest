@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>Отправка сообщения:</h1>
+    <form class="form-group" method="post">
+    {% csrf_token %}
+    <label>Ваше сообщение:</label><br>{{ form.text }}<br>
+
+    <label>Кому вы хотите отправить сообщение:</label><br>{{ form.asker }}<br>
+    <button class="btn btn-primary" type="submit">Отправить</button>
+
+    </form>
+
+
+{% endblock %}
