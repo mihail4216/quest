@@ -10,9 +10,9 @@
     <h2>Menu</h2>
     <menu>
         <li><a href="/" >Главная</a></li>
-        <li><a href="/accounts/lk/" >Личный кабинет</a></li>
+        {% if user.is_authenticated %}<li><a href="/accounts/lk/" >Личный кабинет</a></li>{% endif %}
         <li><a href="/news/all/" >Новости</a></li>
-        <li><a href="/message/all/{{ user.id }}/" >Сообщения</a></li>
+        {% if user.is_authenticated %}<li><a href="/message/all/{{ user.id }}/" >Сообщения</a></li>{% endif %}
     </menu>
 
    <div class="login"> {% if user.is_active %}

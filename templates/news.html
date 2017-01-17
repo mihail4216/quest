@@ -1,7 +1,8 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <h1>News!</h1><p class="text-right" ><a href="/news/add/">add news</a></p>
+    <h1>News!</h1>
+    {% if user.is_authenticated %}<p class="text-right" ><a href="/news/add/">add news</a></p>{% endif %}
    {% for newsone in news_list %}
        <h2><a href="/news/{{ newsone.id }}/">{{ newsone.title }}</a></h2>
        <h3>{{ newsone.text }}</h3>

@@ -2,7 +2,7 @@
 
 
 {% block content %}
-{% if user.is_active %}
+{% if user.is_authenticated %}
     <h2>add News</h2>
         <form method="post">
             {% csrf_token %}

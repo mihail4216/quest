@@ -9,3 +9,5 @@ class Message(models.Model):
     def __unicode__(self):
         ss = 'sender( '+self.sender +')   text:   '+ self.text
         return ss
+    class Meta:
+        ordering = ['-id']

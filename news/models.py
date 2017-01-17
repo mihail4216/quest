@@ -13,6 +13,9 @@ class News(models.Model):
     def __unicode__(self):
         return self.title
 
+    class Meta:
+        ordering = ['-id']
+
 
 class Comments(models.Model):
     title = models.CharField(max_length=40)

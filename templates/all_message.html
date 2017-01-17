@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<h1>Мои сообщения</h1><p><a href="/message/send_message/">send</a></p>
+<h1>Мои сообщения</h1>{% if user.is_authenticated %}<p><a href="/message/send_message/">send</a></p>{% endif %}
 {% for i in message1 %}
 
     <div class="checkbox">
