@@ -6754,4 +6754,15 @@ button.close {
     display: none !important;
   }
 }
+.block1{
+  margin-left: 20%;
+  margin-top: 20%;
+  margin-bottom: 20%;
+  margin-right: 20%;
+}
+.chat{
+  margin-right: 20%;
+  margin-left: 20%;
+
+}
 /*# sourceMappingURL=bootstrap.css.map */

@@ -1,13 +1,33 @@
 {% extends 'main.html' %}
 
 {% block content %}
+   <h2 align="center">{{ message2.0.sender }}</h2>
+    <div class="chat" >
+       {% for i in message2 %}
+       <p class="text-left"><label>{{ i.date }}'''''{{ i.text }}'''''{{ i.sender }}</label></p>
+        <br>
+
+    {% endfor %}
+    {% for i in message3 %}
+       <p class="text-right"><label>{{ i.asker }}'''''{{ i.text }}'''''{{ i.sender }}</label></p>
+        <br>
+
+    {% endfor %}
+    {{ me }}
+   </div>
+
+
+
+
     {% if user.is_authenticated %}
     <h1>Отправка сообщения:</h1>
     <form class="form-group" method="post">
     {% csrf_token %}
     <label>Ваше сообщение:</label><br>{{ form.text }}<br>
 
-    <label>Кому вы хотите отправить сообщение:</label><br>{{ form.asker }}<br>
+{#    <label>Кому вы хотите отправить сообщение:</label><br>{{ form.asker }}<br>#}
+
+
     <button class="btn btn-primary" type="submit">Отправить</button>
 
     </form>

@@ -2,17 +2,24 @@
 
 
 {% block content %}
-<h1>Мои сообщения</h1>{% if user.is_authenticated %}<p><a href="/message/send_message/">send</a></p>{% endif %}
+<h1>Мои сообщения</h1>
+{% if user.is_authenticated %}
+    <p><a href="/message/send_message/">send</a></p>
+{% endif %}
 {% for i in message1 %}
 
     <div class="checkbox">
    <table border="1px">
-       <tr><td><label>Отправитель:{{ i.sender }}</label></td>
+       <tr>
+           <td><label>Отправитель:<a href="/message/send_messages/{{ i.sender_id }}">{{ i.sender }}</a></label></td>
 
            <td width="100%"><label>Текст:  {{ i.text }}</label></td>
+
        </tr>
    </table>
     </div>
+
+
 {% endfor %}
 
 

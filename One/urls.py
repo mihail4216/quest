@@ -8,7 +8,9 @@ from One.views import *
 
 
 urlpatterns = [
-    url(r'^$',MainView.as_view(),name='main'),
+
+    # url(r'^/(?P<pk>\d+)/$',User_data.as_view(),name='user_data'),
     # url(r'^logout/', include()),
+    url(r'^$',MainView.as_view(),name='main'),
 
 ]

@@ -11,4 +11,5 @@ class SendMessageForm(ModelForm):
             'text',
             'asker',
             'sender',
+
         )

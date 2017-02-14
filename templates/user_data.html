@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+{#   {% for i in personaldata_list %}#}
+{#       {{ i }}#}
+{#    {% endfor %}#}
+    <label><h1>Пользователь: {{ personaldata }}</h1></label><br>
+{#    <image height="100" xlink:href="{{ personaldata.photo }}" width="100"></image><br>#}
+    <img src="{{ personaldata.photo }}"><br>
+    <label>Номер телефона: {{ personaldata.phone }}</label><br>
+    <label>Родной город: {{ personaldata.city }}</label><br>
+    <label>День рождения: {{ personaldata.hbd }}</label><br>
+{% endblock %}

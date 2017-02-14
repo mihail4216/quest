@@ -2,3 +2,13 @@
 .idea/
 *.py[cod]
 *.xml
+Будет удалено MyBlog/files/
+Будет удалено accounts/migrations/0005_personaldata.py
+Будет удалено accounts/migrations/0006_auto_20170202_0116.py
+Будет удалено accounts/migrations/0007_auto_20170202_0129.py
+Будет удалено massage/migrations/0002_auto_20170118_2214.py
+Будет удалено massage/migrations/0003_message_date.py
+Будет удалено news/migrations/0002_auto_20170118_2214.py
+Будет удалено static/image/
+Будет удалено templates/send_any_message.html
+Будет удалено templates/user_data.html

@@ -10,8 +10,8 @@ from django.views.generic.edit import FormView, CreateView, UpdateView
 
 from accounts.forms import CustomUserCreationForm, EditForm
 
-
 # from accounts.models import User
+from accounts.models import PersonalData
 
 
 class LoginView(FormView):
@@ -28,6 +28,11 @@ class LoginView(FormView):
 class LkView(ListView):
     template_name = "lk.html"
     model = User
+    def get_context_data(self, **kwargs):
+        context = super(LkView,self).get_context_data(**kwargs)
+        context['self_info'] =PersonalData.objects.get(user=self.request.user.id)
+
+        return context
 
 
 
@@ -69,14 +74,11 @@ class RegisterView(CreateView):
 class EditView(UpdateView):
     template_name = 'edit.html'
     form_class = EditForm
-    model = User
+    model = PersonalData
     def get_success_url(self):
         self.urls = '/lk/'
     def form_valid(self, form):
         user= form.save()
-        User.email = form.cleaned_data['email']
-        User.last_name = form.cleaned_data['last_name']
-        User.first_name = form.cleaned_data['first_name']
         user.save()
         return redirect('/accounts/lk/')
 

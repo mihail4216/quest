@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django.utils.translation import ugettext, ugettext_lazy as _
 
-
+from accounts.models import PersonalData
 
 
 class CustomUserCreationForm(forms.ModelForm):
@@ -11,6 +11,7 @@ class CustomUserCreationForm(forms.ModelForm):
     A form that creates a user, with no privileges, from the given username and
     password.
     """
+
     error_messages = {
         'password_mismatch': _("The two password fields didn't match."),
     }
@@ -22,7 +23,7 @@ class CustomUserCreationForm(forms.ModelForm):
     # email = forms.EmailField()
     class Meta:
         model = User
-        fields = ("username",'email')
+        fields = ("username",'email','first_name','last_name')
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -80,16 +81,14 @@ class CustomUserCreationForm(forms.ModelForm):
 
 class EditForm(ModelForm):
     class Meta:
-        model = User
+        model = PersonalData
         fields = (
-            "last_name",
-            "first_name",
-            "email",
-        )
-    last_name = forms.CharField()
-    first_name = forms.CharField()
-    email = forms.EmailField()
-    # data_joined = forms.DateTimeField()
+            'photo',
+            'phone',
+            'city',
+            'hbd',
+            )
+
 
 
 

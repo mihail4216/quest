@@ -7,7 +7,7 @@
        <h2><a href="/news/{{ newsone.id }}/">{{ newsone.title }}</a></h2>
        <h3>{{ newsone.text }}</h3>
        <h5><a >Лайки: {{ newsone.likes }}</a></h5>
-       <h5>Автор: {{ newsone.avtor.username }}</h5>
+       <h5>Автор:<a href="/accounts/{{ newsone.avtor.id }}/"> {{ newsone.avtor.username }}</a></h5>
        <br>
    {% endfor %}
 

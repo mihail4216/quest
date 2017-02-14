@@ -1,16 +1,19 @@
 {% extends 'main.html' %}
-
+{% load staticfiles %}
 
 
 {% block content %}
     {% if user.is_active %}
         <h1>Личный кабинет!</h1>
         <div >
-            <label  >Ваш логин:<br> {{ user.username }}</label><br>
+        <label>Ваше фото: <img src="{{ self_info.photo }}"></label><br>
+        <label>Ваш логин:<br> {{ user.username }}</label><br>
         <label >Ваш email: {{ user.email }}</label><br>
         <label>Вашe имя: {{ user.first_name }}</label><br>
         <label>Ваша фамилия: {{ user.last_name }}</label><br>
-        <label>Дата регистрации: {{ user.date_joined }}</label><br>
+        <label>Номер телефона: {{ self_info.phone }}</label><br>
+        <label>Родной город: {{ self_info.city }}</label><br>
+        <label>Дата рождения: {{ self_info.hbd }}</label><br>
         <label><a href="/accounts/edit/{{ user.id }}/">Edit</a></label><br>
         </div>
     {% else %}
