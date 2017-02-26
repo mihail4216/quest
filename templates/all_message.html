@@ -13,11 +13,17 @@
        <tr>
            <td><label>Отправитель:<a href="/message/send_messages/{{ i.sender_id }}">{{ i.sender }}</a></label></td>
 
-           <td width="100%"><label>Текст:  {{ i.text }}</label></td>
+           <td width="80%"><label>Текст:  {{ i.text }}</label></td>
+           <td><label>{{ i.date}}</label></td>
 
        </tr>
    </table>
     </div>
+
+
+<script>
+
+</script>
 
 
 {% endfor %}

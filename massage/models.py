@@ -8,7 +8,7 @@ from django.utils import timezone
 class Message(models.Model):
     text = models.TextField()
     sender = models.ForeignKey(User,related_name='sending_mails',blank=True,null=True)
-    asker = models.ManyToManyField(User,related_name='asker_mails',blank=True,null=True)
+    asker = models.ForeignKey(User,related_name='asker_mails',blank=True,null=True)
     date = models.DateTimeField(default=timezone.now)
 
     def __unicode__(self):

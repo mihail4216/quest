@@ -1,4 +1,6 @@
 from time import timezone
+
+from django.core.mail import send_mail
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
@@ -12,23 +14,19 @@ from massage.models import Message
 
 
 class AllMessageView(TemplateView):
-    # model = Message
     template_name = 'all_message.html'
 
     def get_context_data(self, **kwargs):
         context = super(AllMessageView, self).get_context_data(**kwargs)
 
-        # ds = dict()
-        # for i in Message.:
-        #     a=Message.objects.i
-        #     a=a.id
-        #     ds.update(i,a)
-        # print ds
-        # all_message = Message.objects.filter(asker=self.request.user.id)
-        # page = Paginator(all_message,7)
-        #
-        # context['message1'] = page.page(1)
-        context['message1']= Message.objects.filter(asker=self.request.user.id)
+        a=Message.objects.filter(asker=self.request.user.id)
+        namelist=[]
+        namelist1=[]
+        for i in a:
+            if i.sender not in namelist:
+                namelist.append(i.sender)
+                namelist1.append(i)
+        context['message1'] = namelist1
         return context
 
 
@@ -40,21 +38,26 @@ class SendMessageView(CreateView):
     def form_valid(self, form):
         sms=form.save(commit=False)
         sms.sender = User.objects.get(id=self.request.user.id)
-        # sms.asker = User.objects.get(id=self.kwargs['pk'])
-        # sms.asker.add(User.objects.get(id=self.kwargs['pk']))
-        # sms.date = timezone.now()
+        sms.asker = User.objects.get(id=self.kwargs['pk'])
         sms.save()
-        sms.asker.add(User.objects.get(id=self.kwargs['pk']))
-        return redirect('/message/send_messages/'+ str(self.request.user.id))
+        return redirect('/message/send_messages/'+ str(self.kwargs['pk']))
 
     def get_context_data(self, **kwargs):
         context = super(SendMessageView,self).get_context_data(**kwargs)
-        # a = User.objects.get(id=self.kwargs['pk'])
-        # a=a.username
         a=self.request.user.asker_mails.filter(sender= self.kwargs['pk'])
         b=self.request.user.sending_mails.filter(asker=self.kwargs['pk'])
+        c=[]
+        for i in b:
+            c.append(i)
+        for i in a:
+            c.append(i)
+        for i in range(len(c)-1):
+            for j in range(len(c)-1):
+                if c[j].date>c[j+1].date:
+                    c[j], c[j + 1] = c[j + 1], c[j]
         context['message2'] = a
-        context['message3']= b
+        context['message3']=c
+
         return context
 
 
@@ -66,7 +69,6 @@ class SendAnyMessageView(CreateView):
     def form_valid(self, form):
         sms=form.save(commit=False)
         sms.sender = User.objects.get(id=self.request.user.id)
-        # sms.date = timezone.now()
         sms.save()
         return redirect('/message/all/'+ str(self.request.user.id))
 

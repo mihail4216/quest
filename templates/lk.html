@@ -6,7 +6,7 @@
     {% if user.is_active %}
         <h1>Личный кабинет!</h1>
         <div >
-        <label>Ваше фото: <img src="{{ self_info.photo }}"></label><br>
+        <label>Ваше фото:<br> <img  src="{{ self_info.photo }}" height="200px" width="200px"></label><br>
         <label>Ваш логин:<br> {{ user.username }}</label><br>
         <label >Ваш email: {{ user.email }}</label><br>
         <label>Вашe имя: {{ user.first_name }}</label><br>

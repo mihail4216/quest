@@ -1,21 +1,18 @@
 {% extends 'main.html' %}
 
 {% block content %}
-   <h2 align="center">{{ message2.0.sender }}</h2>
-    <div class="chat" >
-       {% for i in message2 %}
-       <p class="text-left"><label>{{ i.date }}'''''{{ i.text }}'''''{{ i.sender }}</label></p>
-        <br>
 
-    {% endfor %}
-    {% for i in message3 %}
-       <p class="text-right"><label>{{ i.asker }}'''''{{ i.text }}'''''{{ i.sender }}</label></p>
-        <br>
-
-    {% endfor %}
-    {{ me }}
-   </div>
-
+<div class="chat"><h2 align="center">{{ message2.0.sender }}</h2>
+{% for i in message3 %}
+    {% if i.sender == message2.0.sender %}
+   <p class="text-right"><label>{{ i.date }}'''''{{ i.text }}'''''{{ i.sender }}</label></p>
+    <br>
+    {% else %}
+   <p class="text-left"><label>{{ i.date }}'''''{{ i.text }}'''''{{ i.sender }}</label></p>
+    <br>
+    {% endif %}
+{% endfor %}
+</div>
 
 
 

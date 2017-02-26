@@ -114,5 +114,10 @@ STATICFILES_DIRS = (
     ('static','/home/mihail/PycharmProjects/MyBlog/static/'),
 )
 _PATH = os.path.abspath(os.path.dirname(__file__))
-MEDIA_ROOT = os.path.join(_PATH,'files','media')
-MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(_PATH,'files','media')
+MEDIA_ROOT="/home/mihail/PycharmProjects/MyBlog/MyBlog/files/media"
+MEDIA_URL = '/home/mihail/PycharmProjects/MyBlog/MyBlog/files/media/'
+#Email settings
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 82
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
