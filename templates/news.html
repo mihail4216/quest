@@ -1,6 +1,17 @@
 {% extends 'main.html' %}
+{% load staticfiles %}
 
 {% block content %}
+{#    <ul></ul>#}
+{#    <button id="gb">dsa</button>#}
+{#    <form method="get" >#}
+{#    <input  id="us">#}
+{#    <button type="submit">da</button>#}
+{#    </form>#}
+{##}
+
+
+
     <h1>News!</h1>
     {% if user.is_authenticated %}<p class="text-right" ><a href="/news/add/">add news</a></p>{% endif %}
    {% for newsone in news_list %}
@@ -10,5 +21,8 @@
        <h5>Автор:<a href="/accounts/{{ newsone.avtor.id }}/"> {{ newsone.avtor.username }}</a></h5>
        <br>
    {% endfor %}
+{% block js_content %}
+    <script src="{% static "static/js/main.js" %}"></script>
+{% endblock %}
 
 {% endblock %}

@@ -56,7 +56,7 @@ class SendMessageView(CreateView):
                 if c[j].date>c[j+1].date:
                     c[j], c[j + 1] = c[j + 1], c[j]
         context['message2'] = a
-        context['message3']=c
+        context['message3']=c[-8:]
 
         return context
 

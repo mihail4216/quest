@@ -5,10 +5,10 @@
 <div class="chat"><h2 align="center">{{ message2.0.sender }}</h2>
 {% for i in message3 %}
     {% if i.sender == message2.0.sender %}
-   <p class="text-right"><label>{{ i.date }}'''''{{ i.text }}'''''{{ i.sender }}</label></p>
+   <p class="text-right"><label>{{ i.date1 }}'''''{{ i.text }}'''''{{ i.sender1 }}</label></p>
     <br>
     {% else %}
-   <p class="text-left"><label>{{ i.date }}'''''{{ i.text }}'''''{{ i.sender }}</label></p>
+   <p class="text-left"><label>{{ i.date1}}'''''{{ i.text }}'''''{{ i.sender1 }}</label></p>
     <br>
     {% endif %}
 {% endfor %}

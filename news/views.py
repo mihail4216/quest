@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
+import json
+
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import DetailView
 from django.views.generic import ListView
@@ -12,10 +15,19 @@ from news.forms import NewsAddForm, CommentAddForm
 from news.models import News,Comments
 
 
+def more_todo(request):
+
+    print 2
+    if request.GET:
+        todo_items=['123','345','567']
+        data = json.dumps(todo_items)
+        print 1
+        return HttpResponse(data,content_type='aplication/json')
+
+
 class NewsView(ListView):
     model = News
     template_name = 'news.html'
-
 
 # class CommentAddView(CreateView):
 #     form_class = CommentAddForm

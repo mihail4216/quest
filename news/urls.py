@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/$',NewsOneView.as_view(),name='news_one'),
     url(r'^add/',NewsAddView.as_view(),name='add_news'),
     url(r'^add_like/(?P<pk>\d+)/',AddLikeView,name='add_like'),
+    url(r'^more/',more_todo),
 ]
