@@ -7,6 +7,8 @@ class NewsAdmin(admin.ModelAdmin):
        'title',
        'text',
        'avtor',
+       'likes',
+       'people',
 
    ]
    # inlines = ['NewsInLine']

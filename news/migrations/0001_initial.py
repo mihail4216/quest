@@ -28,8 +28,12 @@ class Migration(migrations.Migration):
                 ('title', models.CharField(unique=True, max_length=20)),
                 ('text', models.TextField()),
                 ('likes', models.IntegerField(default=0)),
-                ('avtor', models.ForeignKey(blank=True, to=settings.AUTH_USER_MODEL, null=True)),
+                ('avtor', models.OneToOneField(related_name='avtor', null=True, blank=True, to=settings.AUTH_USER_MODEL)),
+                ('people', models.ForeignKey(related_name='people', blank=True, to=settings.AUTH_USER_MODEL, null=True)),
             ],
+            options={
+                'ordering': ['-id'],
+            },
         ),
         migrations.AddField(
             model_name='comments',

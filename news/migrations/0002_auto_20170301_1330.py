@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+from django.conf import settings
 
 
 class Migration(migrations.Migration):
@@ -11,8 +12,9 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.AlterModelOptions(
-            name='news',
-            options={'ordering': ['-id']},
+        migrations.AlterField(
+            model_name='news',
+            name='avtor',
+            field=models.ForeignKey(related_name='avtor', blank=True, to=settings.AUTH_USER_MODEL, null=True),
         ),
     ]

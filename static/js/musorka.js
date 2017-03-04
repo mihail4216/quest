@@ -2,31 +2,6 @@
  * Created by mihail on 27.02.17.
  */
 
-
-
-    $.ajax({
-        type:'GET',
-        url:'more/',
-        data:{
-            user_name: $('#us').val()
-
-        },
-        dataType:'html'
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // $('.get-more').click(function(){
 //         alert(1233333);
 //         $.ajax({

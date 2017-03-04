@@ -2,27 +2,44 @@
 {% load staticfiles %}
 
 {% block content %}
-{#    <ul></ul>#}
-{#    <button id="gb">dsa</button>#}
-{#    <form method="get" >#}
-{#    <input  id="us">#}
-{#    <button type="submit">da</button>#}
+
+
+{#    <form method="get" style="background: chocolate">#}
+    <input  style="height: 42px" id="find_word">
+
 {#    </form>#}
-{##}
+    <button id="find_bt" type="submit"class="btn btn-lg btn-primary">Найти</button>
+    <div id="true_news" style="display:none"><h1 style="color: #2e6da4">Новость найдена!</h1></div>
+    <div id="false_news"style="display:none" ><p style="color: #d43f3a">Новость не найдена!</p></div>
+    <div id="find_news_block" class="display:none"></div>
 
 
 
+
+
+
+
+<div id="news_all">
     <h1>News!</h1>
-    {% if user.is_authenticated %}<p class="text-right" ><a href="/news/add/">add news</a></p>{% endif %}
-   {% for newsone in news_list %}
-       <h2><a href="/news/{{ newsone.id }}/">{{ newsone.title }}</a></h2>
-       <h3>{{ newsone.text }}</h3>
-       <h5><a >Лайки: {{ newsone.likes }}</a></h5>
-       <h5>Автор:<a href="/accounts/{{ newsone.avtor.id }}/"> {{ newsone.avtor.username }}</a></h5>
-       <br>
-   {% endfor %}
-{% block js_content %}
-    <script src="{% static "static/js/main.js" %}"></script>
-{% endblock %}
+    {% if user.is_authenticated %}
+        <p class="text-right" ><a href="/news/add/">add news</a></p>
+    {% endif %}
 
+        {% for newsone in news_list %}
+            <div id="news_one" class="news_more" style="display: none">
+            <h2><a href="/news/{{ newsone.id }}/">{{ newsone.title }}</a></h2>
+            <h3>{{ newsone.text }}</h3>
+            <h5><a id="like">Лайки: {{ newsone.likes }}</a></h5>
+            <h5>Автор:<a href="/accounts/{{ newsone.avtor.id }}/"> {{ newsone.avtor.username }}</a></h5>
+            <br>
+            </div>
+        {% endfor %}
+
+    <button id="show" class="btn btn-default btn-lg">Показать больше</button>
+</div>
+
+{% endblock %}
+{% block js_content %}
+{#    <script src="{% static "static/js/news_all.js" %}"></script>#}
+    <script src="{% static "static/js/news_all.js" %}"></script>
 {% endblock %}

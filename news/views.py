@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, render_to_response
 from django.views.generic import DetailView
 from django.views.generic import ListView
@@ -15,14 +16,35 @@ from news.forms import NewsAddForm, CommentAddForm
 from news.models import News,Comments
 
 
-def more_todo(request):
+def news_find(request):
 
-    print 2
     if request.GET:
-        todo_items=['123','345','567']
-        data = json.dumps(todo_items)
-        print 1
-        return HttpResponse(data,content_type='aplication/json')
+        # todo_items=['123','345','567']
+        # data = json.dumps(todo_items)
+        # return HttpResponse(data,content_type='aplication/json')
+        news = request.GET['news_name']
+
+        find = News.objects.get(title=news)
+        # find=json.dumps(find)
+        avtor_id =News.objects.get(title=news).avtor
+        avtor = avtor_id.username
+        avtor_id = avtor_id.id
+
+
+        response={
+            'avtor': avtor ,
+            'title': News.objects.get(title=news).title,
+            'likes': News.objects.get(title=news).likes,
+            'text': News.objects.get(title=news).text,
+            'id': News.objects.get(title=news).id,
+            'avtor_id':avtor_id,
+        }
+
+        # return HttpResponse('13',content_type='application/json')
+        return JsonResponse(data=response)
+    return HttpResponse('qwe', content_type='text/html')
+    #     return  HttpResponse('yes',content_type='text/html')
+    # return HttpResponse('no',content_type='text/html')
 
 
 class NewsView(ListView):
@@ -78,21 +100,6 @@ class NewsOneView(CreateView):
         # Комментарий прикрепляем к новости
         comment.comments_news = News.objects.get(id=self.kwargs['pk'])
         comment.avtor = User.objects.get(id=self.request.user.id)
-        # здесь мне нужно указать к какой новости я делаю комментарий?
-        # а автора тоже нужно в форм валид указыать?
-        # <= Вот
-        # твоя
-        # строка
-        # которая
-        # это
-        # делает
-        # Comments.text тавк вообще делать нельзя  + странно ты тут вещи делаешь
-
-        # Comments.text = form.cleaned_data['text']
-        # Comments.title = form.cleaned_data['title']
-        # Формы вручную не так создают, по другому совсем, тебе рановато так их создавать
-        # News.avtor_id = self.request.user
-        # Comments.comments_news_id = self.request.News.id
         comment.save()
         # Вот теперь он должен нормально корректно работать
         return redirect('/news/all/')
@@ -110,20 +117,8 @@ class NewsAddView(CreateView):
     def form_valid(self, form):
 
 
-        """Если честно то у теб тут магия, я не понимаю почему он тут не добавляет пользователя, хлотя должен
-        поэтому пришлось переписать стандартный метод сохранения у формы, то есть передать тужда объект пользователя
-        и при сохранении самого объекта его уже добавлять
-
-
-        если еще будут вопросы, то пиши в слаке, сейчас уже не могу ок
-        """
         user = User.objects.get(id=self.request.user.id)
         form.save(user)
-
-        # Вот так можно, через super мы вызываем стандартный метод form valid которые
-        # все сделает нам правильно, как нужно
-        #Затем, мы берем этот объект form , он уже в базе есть, и меняем его поля, в твоем случает добавляем объет пользователя
-        # и обязателнно сохраняем его
         return redirect('/news/all/')
 
 def AddLikeView(requst,pk):
@@ -140,6 +135,16 @@ def AddLikeView(requst,pk):
     else:
         redirect('/news/'+pk)
     return redirect('/news/' + pk)
+
+
+def addlike(request,pk):
+    print 1
+    if request.GET:
+        news = News.objects.get(id=pk)
+        print 1
+
+
+
 # class AddLikeViews(RedirectView):
 #
 #     def get(self, request, *args, **kwargs):

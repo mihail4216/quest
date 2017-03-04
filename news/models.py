@@ -7,7 +7,8 @@ class News(models.Model):
     title = models.CharField(max_length=20,unique=True)
     text = models.TextField()
     likes = models.IntegerField(default=0)
-    avtor = models.ForeignKey(User,null=True,blank=True)
+    avtor = models.ForeignKey(User,null=True,blank=True,related_name='avtor')
+    people = models.ManyToManyField(User,blank=True,related_name='people')
     # news_comments = models.ForeignKey(Comments)
 
     def __unicode__(self):
