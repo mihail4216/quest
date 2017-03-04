@@ -6,7 +6,9 @@
     {% if user.is_active %}
         <h1>Личный кабинет!</h1>
         <div >
-        <label>Ваше фото:<br> <img  src="{{ self_info.photo }}" height="200px" width="200px"></label><br>
+{#        <div>#}
+        <label>Ваше фото:<br> <img id="photo" style="text-align: center " src="{{ self_info.photo }}" height="200px" width="200px"></label><br>
+{#        </div>#}
         <label>Ваш логин:<br> {{ user.username }}</label><br>
         <label >Ваш email: {{ user.email }}</label><br>
         <label>Вашe имя: {{ user.first_name }}</label><br>
@@ -19,4 +21,8 @@
     {% else %}
         <h4>Сначала войдите или зарегистрируйтесь на сайте!</h4>
     {% endif %}
+{% endblock %}
+{% block js_content %}
+    <script src={% static 'static/js/lk.js' %}></script>
+
 {% endblock %}
