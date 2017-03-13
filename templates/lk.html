@@ -6,7 +6,7 @@
     {% if user.is_active %}
         <h1>Личный кабинет!</h1>
         <div >
-{#        <div>#}
+{#        <div>#} <label><a  href="/accounts/edit/{{ user.id }}/">Edit</a></label><br>
         <label>Ваше фото:<br> <img id="photo" style="text-align: center " src="{{ self_info.photo }}" height="200px" width="200px"></label><br>
 {#        </div>#}
         <label>Ваш логин:<br> {{ user.username }}</label><br>
@@ -16,7 +16,7 @@
         <label>Номер телефона: {{ self_info.phone }}</label><br>
         <label>Родной город: {{ self_info.city }}</label><br>
         <label>Дата рождения: {{ self_info.hbd }}</label><br>
-        <label><a href="/accounts/edit/{{ user.id }}/">Edit</a></label><br>
+
         </div>
     {% else %}
         <h4>Сначала войдите или зарегистрируйтесь на сайте!</h4>
