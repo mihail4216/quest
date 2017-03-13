@@ -103,21 +103,53 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-STATIC_ROOT = "/home/mihail/PycharmProjects/MyBlog"
+# STATIC_ROOT = "/home/mihail/PycharmProjects/MyBlog"
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    ('static','/home/mihail/PycharmProjects/MyBlog/static/'),
-)
-_PATH = os.path.abspath(os.path.dirname(__file__))
-# MEDIA_ROOT = os.path.join(_PATH,'files','media')
-MEDIA_ROOT="/home/mihail/PycharmProjects/MyBlog/MyBlog/files/media"
-MEDIA_URL = '/home/mihail/PycharmProjects/MyBlog/MyBlog/files/media/'
+
+###################################################
+
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = (
+#     ('static',BASE_DIR+'/static/'),
+# )
+# _PATH = os.path.abspath(os.path.dirname(__file__))
+# # MEDIA_ROOT = os.path.join(_PATH,'files','media')
+#
+# MEDIA_ROOT="/home/mihail/PycharmProjects/MyBlog/MyBlog/files/media"
+# MEDIA_URL = '/home/mihail/PycharmProjects/MyBlog/MyBlog/files/media/'
+
+#########################################################
+
+
+# # PROJECT_PATH = os.path.abspath(os.path.dirname(__name__))
+# # PROJECT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+#
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_URL = '/static/'
+
 #Email settings
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 82
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 82
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
+PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
+MEDIA_URL = PROJECT_PATH+'/media/'
+
+STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_PATH, 'staticfiles'),
+
+)

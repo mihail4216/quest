@@ -10,7 +10,7 @@ $(document).ready(function () {
 
                 width: $(this).width() * 3,
                 height: $(this).height() * 3
-            },300);
+            });
             photo_s = false;
         }
         else {

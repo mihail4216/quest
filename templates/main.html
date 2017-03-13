@@ -1,13 +1,14 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Главная</title>
     <link rel="stylesheet" type="text/css" href="{% static "static/css/static.css" %}">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
-<body>
+<body style="background: aquamarine">
     <h2>Menu</h2>
     <menu>
         <li><a href="/" >Главная</a></li>
@@ -34,9 +35,5 @@
 
 
 </body>
-{% block js_content %}
-
-
-
-{% endblock %}
+{% block js_content %}{% endblock %}
 </html>
