@@ -94,3 +94,13 @@ class EditForm(ModelForm):
 
 
 
+class EditsForm(ModelForm):
+    class Meta:
+        model = PersonalData
+        fields = (
+            'photo',
+            'phone',
+            'city',
+            'hbd',
+            'user',
+            )

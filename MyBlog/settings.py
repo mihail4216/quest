@@ -150,6 +150,6 @@ STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(PROJECT_PATH, 'staticfiles'),
+    os.path.join(PROJECT_PATH, 'static/'),
 
 )

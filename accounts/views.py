@@ -4,11 +4,12 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 from django.shortcuts import render, render_to_response, redirect
+from django.views.generic import DetailView
 from django.views.generic import ListView
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.edit import FormView, CreateView, UpdateView
 
-from accounts.forms import CustomUserCreationForm, EditForm
+from accounts.forms import CustomUserCreationForm, EditForm, EditsForm
 
 # from accounts.models import User
 from accounts.models import PersonalData
@@ -29,10 +30,15 @@ class LkView(ListView):
     template_name = "lk.html"
     model = User
     def get_context_data(self, **kwargs):
-        context = super(LkView,self).get_context_data(**kwargs)
-        context['self_info'] =PersonalData.objects.get(user=self.request.user.id)
-
+        context = super(LkView, self).get_context_data(**kwargs)
+        try:
+            context['self_info'] = PersonalData.objects.get(user=self.request.user.id)
+            # PersonalData.objects.get(user=self.request.user.id)
+        except:
+            context['self_info'] = '1'
+            return context
         return context
+
 
 
 
@@ -83,3 +89,14 @@ class EditView(UpdateView):
         return redirect('/accounts/lk/')
 
 
+class CreatePDView(CreateView):
+    template_name = 'creat_pd.html'
+    model = PersonalData
+    form_class = EditsForm
+    def form_valid(self, form):
+        print 2
+        pd = form.save(commit=False)
+        print 1
+        pd.user = self.request.user
+        pd.save()
+        return redirect('/accounts/lk')

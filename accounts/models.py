@@ -10,6 +10,6 @@ class PersonalData(models.Model):
     phone = models.IntegerField(null=True,blank=True)
     hbd = models.DateField(null=True,blank=True)
     city = models.CharField(max_length=30,null=True,blank=True)
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User,blank=True)
     def __unicode__(self):
         return  str(self.user)

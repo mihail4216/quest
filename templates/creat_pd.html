@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+{#    {% for i in form %}#}
+{#            <label>{{ i.label }}</label><br>{{ i }}<br>#}
+{##}
+{#    {% endfor %}#}
+    <label>{{ form.phone.label }}</label><br>{{ form.phone }}<br>
+    <label>{{ form.hbd.label }}</label><br>{{ form.hbd }}<br>
+    <label>{{ form.city.label }}</label><br>{{ form.city }}<br>
+    <label>{{ form.photo.label }}</label><br>{{ form.photo }}<br>
+    <p></p><button class="button btn-primary" type="submit">save</button>
+</form>
+
+
+
+{% endblock %}
